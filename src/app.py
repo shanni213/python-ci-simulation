@@ -54,9 +54,17 @@ currencies = list(EXCHANGE_RATES.keys())
 
 col1, col2 = st.columns(2)
 with col1:
-    from_curr = st.selectbox("ממטבע:", currencies, index=currencies.index("ILS") if "ILS" in currencies else 0)
+    from_curr = st.selectbox(
+        "ממטבע:",
+        currencies,
+        index=currencies.index("ILS") if "ILS" in currencies else 0,
+    )
 with col2:
-    to_curr = st.selectbox("למטבע:", currencies, index=currencies.index("USD") if "USD" in currencies else 0)
+    to_curr = st.selectbox(
+        "למטבע:",
+        currencies,
+        index=currencies.index("USD") if "USD" in currencies else 0,
+    )
 
 if st.button("חשב המרה ✨", use_container_width=True):
     try:
