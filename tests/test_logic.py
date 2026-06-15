@@ -21,7 +21,7 @@ def test_negative_amount_raises_error():
 
 def test_unsupported_currency_raises_error():
     with pytest.raises(ValueError, match="מטבע לא נתמך"):
-        convert_currency(100, "GBP", "USD")
+        convert_currency(100.0, "XYZ", "USD")
 
 
 def test_case_insensitivity():
