@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/shanni213/python-ci-simulation/actions/workflows/ci.yml/badge.svg)](https://github.com/shanni213/python-ci-simulation)
 
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+
 A high-performance currency conversion tool engineered for reliability and maintainability. This project demonstrates a production-grade development workflow, featuring automated CI/CD pipelines, strict static type analysis, and robust unit testing.
 
 ---
@@ -32,7 +34,7 @@ When launched, the application opens a graphical web interface via Streamlit. Us
 ---
 
 ## 📋 Requirements
-* Python 3.10 or later
+* Python 3.12 or later
 
 ---
 
@@ -56,7 +58,8 @@ uv run streamlit run src/app.py
 
 ### Run quality suite
 ```bash
-uv run pytest
+uv run ruff format --check .
 uv run ruff check .
 uv run ty check
+uv run pytest
 ```
