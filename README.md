@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/shanni213/python-ci-simulation/actions/workflows/ci.yml/badge.svg)](https://github.com/shanni213/python-ci-simulation)
 
-![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+[![Coverage](https://codecov.io/gh/shanni213/python-ci-simulation/branch/main/graph/badge.svg)](https://codecov.io/gh/shanni213/python-ci-simulation)
 
 A high-performance currency conversion tool engineered for reliability and maintainability. This project demonstrates a production-grade development workflow, featuring automated CI/CD pipelines, strict static type analysis, and robust unit testing.
 
