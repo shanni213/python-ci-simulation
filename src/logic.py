@@ -1,3 +1,5 @@
+import math
+
 EXCHANGE_RATES = {
     "USD": 1.0,
     "ILS": 3.68,
@@ -14,6 +16,13 @@ EXCHANGE_RATES = {
 
 
 def convert_currency(amount: float, from_currency: str, to_currency: str) -> float:
+    # Validate against non-finite values (NaN, inf, -inf)
+    if not math.isfinite(amount):
+        raise ValueError("סכום חייב להיות מספר סופי")
+    # Prevent empty or whitespace-only currency strings
+    if not from_currency.strip() or not to_currency.strip():
+        raise ValueError("שם המטבע אינו יכול להיות ריק")
+
     if amount < 0:
         raise ValueError("סכום לא יכול להיות שלילי")
 
