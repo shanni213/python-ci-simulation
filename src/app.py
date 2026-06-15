@@ -1,9 +1,12 @@
 import streamlit as st
 from src.logic import convert_currency, EXCHANGE_RATES
 
+
 def setup_page() -> None:
     """Configure Streamlit page settings and apply RTL custom styling."""
-    st.set_page_config(page_title="ממיר מטבעות גלובלי", page_icon="💰", layout="centered")
+    st.set_page_config(
+        page_title="ממיר מטבעות גלובלי", page_icon="💰", layout="centered"
+    )
     st.markdown(
         """
         <style>
@@ -17,10 +20,17 @@ def setup_page() -> None:
         unsafe_allow_html=True,
     )
 
+
 def render_header() -> None:
     """Render the application titles using safe HTML containers."""
-    st.markdown('<div class="rtl-title">💰 ממיר מטבעות גלובלי</div>', unsafe_allow_html=True)
-    st.markdown('<div class="rtl-subtitle">חישוב שערים דינמי בזמן אמת</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="rtl-title">💰 ממיר מטבעות גלובלי</div>', unsafe_allow_html=True
+    )
+    st.markdown(
+        '<div class="rtl-subtitle">חישוב שערים דינמי בזמן אמת</div>',
+        unsafe_allow_html=True,
+    )
+
 
 def render_converter() -> None:
     """Render the currency conversion form layout and handle submission logic."""
@@ -29,9 +39,17 @@ def render_converter() -> None:
 
     col1, col2 = st.columns(2)
     with col1:
-        from_curr = st.selectbox("ממטבע:", currencies, index=currencies.index("ILS") if "ILS" in currencies else 0)
+        from_curr = st.selectbox(
+            "ממטבע:",
+            currencies,
+            index=currencies.index("ILS") if "ILS" in currencies else 0,
+        )
     with col2:
-        to_curr = st.selectbox("למטבע:", currencies, index=currencies.index("USD") if "USD" in currencies else 0)
+        to_curr = st.selectbox(
+            "למטבע:",
+            currencies,
+            index=currencies.index("USD") if "USD" in currencies else 0,
+        )
 
     if st.button("חשב המרה ✨", use_container_width=True):
         try:
@@ -43,11 +61,13 @@ def render_converter() -> None:
         except ValueError as e:
             st.error(f"❌ שגיאה: {e}")
 
+
 def main() -> None:
     """Application main entry point execution flow."""
     setup_page()
     render_header()
     render_converter()
+
 
 if __name__ == "__main__":
     main()
