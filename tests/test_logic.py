@@ -34,3 +34,19 @@ def test_whitespace_handling():
 
 def test_decimal_rounding():
     assert convert_currency(10, "EUR", "ILS") == 40.0
+
+
+def test_non_finite_amount_raises_error():
+    with pytest.raises(ValueError, match="סכום חייב להיות מספר סופי"):
+        convert_currency(float("inf"), "USD", "ILS")
+    with pytest.raises(ValueError, match="סכום חייב להיות מספר סופי"):
+        convert_currency(float("-inf"), "USD", "ILS")
+    with pytest.raises(ValueError, match="סכום חייב להיות מספר סופי"):
+        convert_currency(float("nan"), "USD", "ILS")
+
+
+def test_empty_currency_raises_error():
+    with pytest.raises(ValueError, match="שם המטבע אינו יכול להיות ריק"):
+        convert_currency(100, "", "ILS")
+    with pytest.raises(ValueError, match="שם המטבע אינו יכול להיות ריק"):
+        convert_currency(100, "USD", "   ")
