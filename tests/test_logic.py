@@ -1,5 +1,5 @@
 import pytest
-from src.logic import convert_currency
+from currency_converter.logic import convert_currency
 
 
 def test_standard_conversion():

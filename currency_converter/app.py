@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.logic import convert_currency, EXCHANGE_RATES
+from currency_converter.logic import convert_currency, EXCHANGE_RATES
 
 
 def setup_page() -> None:
