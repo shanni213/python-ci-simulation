@@ -23,11 +23,14 @@ def test_unsupported_currency_raises_error():
     with pytest.raises(ValueError, match="מטבע לא נתמך"):
         convert_currency(100, "GBP", "USD")
 
+
 def test_case_insensitivity():
     assert convert_currency(100, "ils", "uSd") == 27.17
 
+
 def test_whitespace_handling():
     assert convert_currency(100, "  ILS  ", "USD ") == 27.17
+
 
 def test_decimal_rounding():
     assert convert_currency(10, "EUR", "ILS") == 40.0

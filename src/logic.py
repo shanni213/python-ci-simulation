@@ -8,7 +8,7 @@ EXCHANGE_RATES = {
 def convert_currency(amount: float, from_currency: str, to_currency: str) -> float:
     if amount < 0:
         raise ValueError("סכום לא יכול להיות שלילי")
-    
+
     from_currency = from_currency.strip().upper()
     to_currency = to_currency.strip().upper()
 
