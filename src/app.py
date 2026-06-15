@@ -1,11 +1,7 @@
 import streamlit as st
 from src.logic import convert_currency
 
-st.set_page_config(
-    page_title="ממיר מטבעות גלובלי",
-    page_icon="💰",
-    layout="centered"
-)
+st.set_page_config(page_title="ממיר מטבעות גלובלי", page_icon="💰", layout="centered")
 
 st.markdown(
     """
@@ -43,11 +39,15 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
-st.markdown('<div class="rtl-title">💰 ממיר מטבעות גלובלי</div>', unsafe_allow_html=True)
-st.markdown('<div class="rtl-subtitle">חישוב שערים דינמי בזמן אמת</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="rtl-title">💰 ממיר מטבעות גלובלי</div>', unsafe_allow_html=True
+)
+st.markdown(
+    '<div class="rtl-subtitle">חישוב שערים דינמי בזמן אמת</div>', unsafe_allow_html=True
+)
 
 amount = st.number_input("הכניסי סכום להמרה:", value=100.0, step=1.0)
 currencies = ["ILS", "USD", "EUR"]
@@ -61,6 +61,9 @@ with col2:
 if st.button("חשב המרה ✨", use_container_width=True):
     try:
         result = convert_currency(amount, from_curr, to_curr)
-        st.markdown(f'<div style="text-align: center; font-size: 2rem; font-weight: bold; color: #008080;">{result:.2f} {to_curr}</div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div style="text-align: center; font-size: 2rem; font-weight: bold; color: #008080;">{result:.2f} {to_curr}</div>',
+            unsafe_allow_html=True,
+        )
     except ValueError as e:
         st.error(f"❌ שגיאה: {e}")
