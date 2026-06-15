@@ -16,6 +16,9 @@ def setup_page() -> None:
         input { direction: LTR !important; text-align: right !important; }
         .rtl-title { text-align: right; direction: RTL; font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
         .rtl-subtitle { text-align: right; direction: RTL; font-size: 1.5rem; color: #555555; margin-bottom: 2rem; }
+        [data-testid="stMetric"] { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+        [data-testid="stMetricLabel"] { text-align: center; width: 100%; }
+        [data-testid="stMetricValue"] { text-align: center; width: 100%; }
         </style>
         """,
         unsafe_allow_html=True,
@@ -35,7 +38,7 @@ def render_header() -> None:
 
 def render_converter() -> None:
     """Render the currency conversion form layout and handle submission logic."""
-    amount = st.number_input("הכניסי סכום להמרה:", value=100.0, step=1.0)
+    amount = st.number_input("הכניסו סכום להמרה:", value=100.0, step=1.0)
     currencies = list(EXCHANGE_RATES.keys())
 
     col1, col2 = st.columns(2)
@@ -55,10 +58,7 @@ def render_converter() -> None:
     if st.button("חשב המרה ✨", use_container_width=True):
         try:
             result = convert_currency(amount, from_curr, to_curr)
-            st.markdown(
-                f'<div style="text-align: center; font-size: 2rem; font-weight: bold; color: #008080;">{result:.2f} {to_curr}</div>',
-                unsafe_allow_html=True,
-            )
+            st.success(f"**תוצאת ההמרה:** {result:.2f} {to_curr}")
         except ValueError as e:
             st.error(f"❌ שגיאה: {e}")
 
