@@ -1,5 +1,5 @@
 import streamlit as st
-from src.logic import convert_currency
+from src.logic import convert_currency, EXCHANGE_RATES
 
 st.set_page_config(page_title="ממיר מטבעות גלובלי", page_icon="💰", layout="centered")
 
@@ -50,13 +50,21 @@ st.markdown(
 )
 
 amount = st.number_input("הכניסי סכום להמרה:", value=100.0, step=1.0)
-currencies = ["ILS", "USD", "EUR"]
+currencies = list(EXCHANGE_RATES.keys())
 
 col1, col2 = st.columns(2)
 with col1:
-    from_curr = st.selectbox("ממטבע:", currencies, index=0)
+    from_curr = st.selectbox(
+        "ממטבע:",
+        currencies,
+        index=currencies.index("ILS") if "ILS" in currencies else 0,
+    )
 with col2:
-    to_curr = st.selectbox("למטבע:", currencies, index=2)
+    to_curr = st.selectbox(
+        "למטבע:",
+        currencies,
+        index=currencies.index("USD") if "USD" in currencies else 0,
+    )
 
 if st.button("חשב המרה ✨", use_container_width=True):
     try:
