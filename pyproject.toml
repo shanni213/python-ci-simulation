@@ -24,3 +24,12 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["src"]
 
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "src/app.py",
+    "tests/*"
+]
+
+[tool.coverage.report]
+show_missing = true
